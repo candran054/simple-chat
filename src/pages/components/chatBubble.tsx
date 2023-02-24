@@ -14,7 +14,7 @@ export default function ChatBubble({ isSender, message }: Props) {
 
   return (
     <div
-      className={`flex py-3 gap-2 ${user && message.uid === user.uid} ${
+      className={`flex py-3 gap-2 ${
         isSender ? "justify-end" : "justify-start"
       }`}
     >
