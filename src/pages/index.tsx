@@ -1,7 +1,5 @@
 import Head from "next/head";
 import Chat from "./chat/chat";
-import { auth } from "@/firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 export default function Home() {
   return (

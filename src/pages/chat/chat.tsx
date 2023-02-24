@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import firebase from "firebase/app";
 import { auth } from "@/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";

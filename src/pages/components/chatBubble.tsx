@@ -1,25 +1,23 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase";
-import Image from "next/image";
 
 interface Props {
-  isSender?: boolean;
   message: any;
 }
 
-export default function ChatBubble({ isSender, message }: Props) {
+export default function ChatBubble({ message }: Props) {
   const [user] = useAuthState(auth);
-  console.log(message.uid);
+  // console.log(message.uid);
 
   return (
     <div
       className={`flex py-3 gap-2 ${
-        isSender ? "justify-end" : "justify-start"
-      }`}
+        user && message?.uid === user?.uid ? "justify-end" : ""
+      } `}
     >
       <div className="flex items-center">
-        {message.avatar && (
+        {message?.avatar && (
           <img
             className="rounded-full"
             src={message.avatar}
@@ -32,11 +30,11 @@ export default function ChatBubble({ isSender, message }: Props) {
 
       <div
         className={`px-3 py-2 ${
-          isSender ? "bg-[#DCF8C6]" : "bg-white"
+          user && message?.uid === user?.uid ? "bg-[#DCF8C6]" : "bg-white"
         } rounded-lg`}
       >
-        <p className="font-bold">{message.name}</p>
-        <p className="m-0 text-sm text-left">{message.text}</p>
+        <p className="font-bold">{message?.name}</p>
+        <p className="m-0 text-sm text-left">{message?.text}</p>
       </div>
     </div>
   );
