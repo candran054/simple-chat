@@ -40,11 +40,10 @@ export default function MessageBox() {
   }, []);
 
   return (
-    <div className="overflow-auto">
+    <div>
       {messages.map((message) => (
-        <ChatBubble key={message.id} message={message} />
+        <ChatBubble key={message.id} message={message} messageId={message.id} />
       ))}
-      <SendMessage />
     </div>
   );
 }
